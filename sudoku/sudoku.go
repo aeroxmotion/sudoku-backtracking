@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-// Sudoku borrowed from:
-// https://medium.com/swlh/backtracking-algorithm-to-solve-sudoku-puzzle-in-javascript-732aedcf5e2
 type Sudoku [9][9]Cell
 
 func (s Sudoku) IsValid(rowIndex, colIndex, value int) bool {
@@ -47,6 +45,10 @@ func (s Sudoku) InColumn(colIndex, value int) bool {
 	}
 
 	return false
+}
+
+func (s Sudoku) IsEmpty(rowIndex, colIndex int) bool {
+	return s[rowIndex][colIndex].IsEmpty()
 }
 
 func (s *Sudoku) PutValue(rowIndex, colIndex, value int) {

@@ -2,6 +2,7 @@ package sudoku
 
 import (
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -58,5 +59,22 @@ func TestSudoku_PutValue(t *testing.T) {
 }
 
 func TestSudoku_String(t *testing.T) {
+	expectedRows := [11]string{
+		"100|000|000",
+		"020|000|000",
+		"003|000|000",
+		"-----------",
+		"000|400|000",
+		"000|050|000",
+		"000|006|000",
+		"-----------",
+		"000|000|700",
+		"000|000|080",
+		"000|000|009",
+	}
 
+	// TODO: We should trim trailing line break?
+	expectedFormat := strings.Join(expectedRows[:], "\n") + "\n"
+
+	assert.Equal(t, expectedFormat, s.String())
 }

@@ -8,9 +8,9 @@ import (
 )
 
 // ParseSudokuInstructions
-// parses the given row's instructions by interpreting all negative
+// parses the given `instructionRows` by interpreting all negative
 // integers as a padding of `n` zeroes (internally managed as offset),
-// e.g. given a row's instructions like this:
+// e.g. given a row of instructions like this:
 // "-4 5 -4"
 // will generate the following row:
 // "0 0 0 0 5 0 0 0 0"

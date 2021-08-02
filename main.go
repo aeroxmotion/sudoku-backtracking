@@ -5,6 +5,7 @@ import (
 	"github.com/LosMaquios/sudoku-backtracking/solver"
 )
 
+// Test by showing solved sudoku
 func main() {
 	s := parser.ParseSudokuInstructions([9]string{
 		"0 3 2 -3 8",
@@ -19,9 +20,6 @@ func main() {
 		"8 5 0 9 4 -3 6",
 		"-4 8 -2 2",
 	})
-
-	println("===== Parsed sudoku =====\n" + s.String())
-	println()
 
 	solver.SolveSudoku(s)
 

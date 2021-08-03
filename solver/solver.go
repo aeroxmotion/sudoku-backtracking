@@ -3,14 +3,14 @@ package solver
 import "github.com/LosMaquios/sudoku-backtracking/sudoku"
 
 func SolveSudoku(s *sudoku.Sudoku) {
-	validSudoku := SolveSudokuRecursive(s, 0, 0)
+	validSudoku := solveSudokuRecursive(s, 0, 0)
 
 	if !validSudoku {
 		println("[DEBUG]: Invalid sudoku!!!")
 	}
 }
 
-func SolveSudokuRecursive(s *sudoku.Sudoku, rowIndex, colIndex int) bool {
+func solveSudokuRecursive(s *sudoku.Sudoku, rowIndex, colIndex int) bool {
 	if colIndex == 9 {
 		colIndex = 0
 		rowIndex++
@@ -21,14 +21,14 @@ func SolveSudokuRecursive(s *sudoku.Sudoku, rowIndex, colIndex int) bool {
 	}
 
 	if !s.IsEmpty(rowIndex, colIndex) {
-		return SolveSudokuRecursive(s, rowIndex, colIndex + 1)
+		return solveSudokuRecursive(s, rowIndex, colIndex + 1)
 	}
 
 	for n := 1; n <= 9; n++ {
 		if s.IsValid(rowIndex, colIndex, n) {
 			s.PutValue(rowIndex, colIndex, n)
 
-			if SolveSudokuRecursive(s, rowIndex, colIndex + 1) {
+			if solveSudokuRecursive(s, rowIndex, colIndex + 1) {
 				return true
 			}
 

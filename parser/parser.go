@@ -15,7 +15,7 @@ import (
 // will generate the following row:
 // "0 0 0 0 5 0 0 0 0"
 func ParseSudokuInstructions(instructionRows [9]string) *sudoku.Sudoku {
-	s := &sudoku.Sudoku{}
+	s := sudoku.New()
 
 	for row, instructionRow := range instructionRows {
 		commands := strings.Split(instructionRow, " ")

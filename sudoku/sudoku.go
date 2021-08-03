@@ -7,6 +7,10 @@ import (
 
 type Sudoku [9][9]Cell
 
+func New() *Sudoku {
+	return &Sudoku{}
+}
+
 func (s Sudoku) IsValid(rowIndex, colIndex, value int) bool {
 	return !s.InSquare(rowIndex, colIndex, value) &&
 		!s.InRow(rowIndex, value) &&

@@ -8,20 +8,20 @@ import (
 // Test by showing solved sudoku
 func main() {
 	s := parser.ParseSudokuInstructions([9]string{
-		"0 3 2 -3 8",
-		"0 6 -4 1",
-		"5 -7 7",
+		"8",
+		"-2 3 6",
+		"0 7 -2 9 0 2",
 
-		"0 1 -3 4 0 9 0",
-		"-2 4 -2 6",
-		"0 9 -2 1 0 3",
+		"0 5 -3 7",
+		"-4 4 5 7",
+		"-3 1 -3 3",
 
-		"7 -4 5",
-		"8 5 0 9 4 -3 6",
-		"-4 8 -2 2",
+		"-2 1 -4 6 8",
+		"-2 8 5 -3 1",
+		"0 9 -4 4",
 	})
 
 	solver.SolveSudoku(s)
 
-	println("===== Solved sudoku =====\n" + s.String())
+	println("\n> Solved sudoku <\n" + s.String())
 }

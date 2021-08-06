@@ -10,29 +10,31 @@ func SolveSudoku(s *sudoku.Sudoku) {
 	}
 }
 
-func solveSudokuRecursive(s *sudoku.Sudoku, rowIndex, colIndex int) bool {
-	if colIndex == 9 {
-		colIndex = 0
-		rowIndex++
+// y = row's index
+// x = column's index
+func solveSudokuRecursive(sudoku *sudoku.Sudoku, y, x int) bool {
+	if x == 9 {
+		x = 0
+		y++
 	}
 
-	if rowIndex >= 9 {
+	if y == 9 {
 		return true
 	}
 
-	if !s.IsEmpty(rowIndex, colIndex) {
-		return solveSudokuRecursive(s, rowIndex, colIndex + 1)
+	if !sudoku.IsEmpty(y, x) {
+		return solveSudokuRecursive(sudoku, y, x + 1)
 	}
 
 	for n := 1; n <= 9; n++ {
-		if s.IsValid(rowIndex, colIndex, n) {
-			s.PutValue(rowIndex, colIndex, n)
+		if sudoku.IsValid(y, x, n) {
+			sudoku.PutValue(y, x, n)
 
-			if solveSudokuRecursive(s, rowIndex, colIndex + 1) {
+			if solveSudokuRecursive(sudoku, y, x + 1) {
 				return true
 			}
 
-			s.PutValue(rowIndex, colIndex, 0)
+			sudoku.PutValue(y, x, 0)
 		}
 	}
 

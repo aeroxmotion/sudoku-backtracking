@@ -13,8 +13,7 @@ func New() *Sudoku {
 
 func (s Sudoku) IsValid(rowIndex, colIndex, value int) bool {
 	return !s.InSquare(rowIndex, colIndex, value) &&
-		!s.InRow(rowIndex, value) &&
-		!s.InColumn(colIndex, value)
+		!s.InCross(rowIndex, colIndex, value)
 }
 
 func (s Sudoku) InSquare(rowIndex, colIndex, value int) bool {
@@ -31,19 +30,13 @@ func (s Sudoku) InSquare(rowIndex, colIndex, value int) bool {
 	return false
 }
 
-func (s Sudoku) InRow(rowIndex, value int) bool {
-	for _, cell := range s[rowIndex] {
-		if cell.HasValue(value) {
-			return true
-		}
-	}
-
-	return false
-}
-
-func (s Sudoku) InColumn(colIndex, value int) bool {
-	for _, row := range s {
-		if row[colIndex].HasValue(value) {
+func (s Sudoku) InCross(rowIndex, colIndex, value int) bool {
+	for i, row := range s {
+		if
+			// In row?
+			row[colIndex].HasValue(value) ||
+			// In column?
+			s[rowIndex][i].HasValue(value) {
 			return true
 		}
 	}

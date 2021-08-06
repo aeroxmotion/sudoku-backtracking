@@ -25,14 +25,9 @@ func TestSudoku_IsEmpty(t *testing.T) {
 	assert.False(t, s.IsEmpty(7, 7))
 }
 
-func TestSudoku_InRow(t *testing.T) {
-	assert.True(t, s.InRow(0, 1))
-	assert.False(t, s.InRow(2, 2))
-}
-
-func TestSudoku_InColumn(t *testing.T) {
-	assert.True(t, s.InColumn(4, 5))
-	assert.False(t, s.InColumn(7, 3))
+func TestSudoku_InCross(t *testing.T) {
+	assert.True(t, s.InCross(0, 0, 1))
+	assert.False(t, s.InCross(2, 2, 2))
 }
 
 func TestSudoku_InSquare(t *testing.T) {
